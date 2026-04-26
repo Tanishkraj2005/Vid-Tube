@@ -1,76 +1,109 @@
-# Vid-Tube (YouTube Clone)
+<div align="center">
 
-A modern, fully functional YouTube clone built with **React JS**, **Vite**, and the **YouTube Data API v3**. It features Google Authentication via **Firebase**, a personalized Watch History, global state management for a Light/Dark Theme, and a fully responsive design for seamless mobile viewing.
+<img src="https://img.shields.io/badge/Vid--Tube-YouTube%20Clone-red?style=for-the-badge&logo=youtube&logoColor=white" alt="Vid-Tube" />
 
-## ✨ Features
+# 🎬 Vid-Tube
 
-- **Home Feed**: Explore the most popular videos across different categories (Gaming, Music, Sports, etc.).
-- **Video Player**: Watch videos smoothly via iframe embeds, complete with video statistics, channel information, and a comment section.
-- **Search Functionality**: A fully functioning search bar that lets you find any video on YouTube.
-- **User Authentication**: Secure Google Sign-In powered by Firebase.
-- **Watch History**:
-  - Automatically records your watched videos locally for blazing-fast load times.
-  - Syncs seamlessly to the cloud via **Firestore** if you are logged in.
-- **Theme Toggle**: Instantly switch between Light Mode and Dark Mode; your preference is automatically saved.
-- **Responsive UI**: A polished, mobile-friendly interface featuring a collapsable sidebar, auto-resizing grids, and clean navigation.
-- **Settings Page**: Manage your account details, access your watch history, and change visual preferences in one place.
+### A pixel-perfect, full-stack YouTube clone built with React & Firebase
+
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?style=flat-square&logo=vite)](https://vitejs.dev/)
+[![Firebase](https://img.shields.io/badge/Firebase-Auth%20%2B%20Firestore-FFCA28?style=flat-square&logo=firebase)](https://firebase.google.com/)
+[![YouTube API](https://img.shields.io/badge/YouTube-Data%20API%20v3-FF0000?style=flat-square&logo=youtube)](https://developers.google.com/youtube/v3)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+
+<br/>
+
+> **Watch real YouTube videos. Search anything. Sign in with Google. Track your history.**  
+> Built from scratch — no UI libraries, no Tailwind. Pure React + Vanilla CSS.
+
+<br/>
+
+---
+
+</div>
+
+## ✨ Features at a Glance
+
+| 🏠 Home Feed | 🔍 Search | 🎥 Video Player |
+|:---:|:---:|:---:|
+| Real trending videos by category | Live YouTube search results | Autoplay with fullscreen landscape lock |
+
+| 👤 Auth | 🕒 History | ⚙️ Settings |
+|:---:|:---:|:---:|
+| Google Sign-In via Firebase | Auto-saved to LocalStorage + Firestore | Theme, Account, History management |
+
+<br/>
+
+## 🚀 Live Features
+
+- 🔴 **Real Data** — Every video, comment, and subscriber count is live from the YouTube Data API
+- 🌗 **Dark / Light Mode** — Instant toggle with persistent preference
+- 📱 **Fully Responsive** — Works flawlessly on phone, tablet, and desktop
+- 🔐 **Google Authentication** — One-click sign in with Firebase
+- 📺 **Fullscreen Landscape** — Auto-rotates to landscape on Android when going fullscreen
+- 🔀 **Shuffled Feed** — Videos reorder on every reload for a fresh feel
+- 🕹️ **Sidebar Navigation** — Collapsible, closes automatically on mobile after selection
+- 🗑️ **Clear History** — Wipes LocalStorage and Firestore simultaneously
+
+<br/>
+
+---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React (v19), Vite
-- **Routing**: React Router DOM (v7)
-- **State Management**: React Context API (`AuthContext`, `ThemeContext`), `useState`, `useEffect`
-- **Backend / Auth**: Firebase (Authentication & Cloud Firestore)
-- **Data Source**: YouTube Data API v3
-- **Date Formatting**: Moment.js
-- **Styling**: Vanilla CSS (CSS Variables for dynamic theming)
+```
+Frontend      → React 19 + Vite 5
+Routing       → React Router DOM v7
+Auth          → Firebase Authentication (Google Provider)
+Database      → Firebase Cloud Firestore
+API           → YouTube Data API v3
+State         → React Context API (AuthContext, ThemeContext)
+Styling       → Vanilla CSS (CSS Variables for theming)
+Dates         → Moment.js
+```
 
-## 🚀 Getting Started
+<br/>
 
-### Prerequisites
+---
 
-- Node.js (v18 or higher)
-- A Google Cloud Platform account (to obtain a YouTube Data API Key)
-- A Firebase account (for Auth and Database)
+## 📦 Getting Started
 
-### 1. Clone the Repository
+### 1. Clone & Install
 
 ```bash
 git clone https://github.com/Tanishkraj2005/Vid-Tube.git
 cd Vid-Tube
-```
-
-### 2. Install Dependencies
-
-```bash
 npm install
 ```
 
-### 3. Setup the YouTube API Key
+### 2. Get a YouTube API Key
 
-Navigate to `src/data.js` and replace the placeholder API key with your actual YouTube Data API Key.
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a project → Enable **YouTube Data API v3**
+3. Create credentials → **API Key**
 
-```javascript
-// src/data.js
-export const API_KEY = 'YOUR_YOUTUBE_API_KEY';
+Paste it into `src/data.js`:
+
+```js
+export const API_KEY = "YOUR_YOUTUBE_API_KEY";
 ```
 
-### 4. Setup Firebase
+### 3. Setup Firebase
 
-This project uses Firebase for Google Login and Firestore (for cloud-synced Watch History).
+<details>
+<summary><b>Click to expand Firebase setup steps</b></summary>
 
-1. Go to your [Firebase Console](https://console.firebase.google.com/).
-2. Create a new project (or use an existing one).
-3. **Enable Authentication**: Go to Authentication -> Sign-in methods -> Enable "Google".
-4. **Authorize Localhost**: In Authentication -> Settings -> Authorized domains, ensure `localhost` is listed.
-5. **Enable Firestore Database**: Go to Firestore Database and click "Create database". Start in Test Mode or configure proper security rules to allow read/writes for authenticated users.
+1. Go to [Firebase Console](https://console.firebase.google.com/) → Create a project
+2. **Authentication** → Sign-in methods → Enable **Google**
+3. **Firestore Database** → Create database → Start in Test Mode
+4. **Project Settings** → Copy your config object
 
-Copy your Firebase configuration object and paste it into `src/firebase.js`:
+Paste it into `src/firebase.js`:
 
-```javascript
-// src/firebase.js
+```js
 const firebaseConfig = {
-  apiKey: "YOUR_FIREBASE_API_KEY",
+  apiKey: "YOUR_API_KEY",
   authDomain: "your-app.firebaseapp.com",
   projectId: "your-project-id",
   storageBucket: "your-app.firebasestorage.app",
@@ -79,39 +112,96 @@ const firebaseConfig = {
 };
 ```
 
-### 5. Start the Development Server
+> ⚠️ **Never commit real API keys to a public repo.** Use `.env` files in production.
+
+</details>
+
+### 4. Run Locally
 
 ```bash
 npm run dev
 ```
 
-Your app should now be running locally at `http://localhost:5173`.
+Open → `http://localhost:5173` 🎉
+
+<br/>
+
+---
 
 ## 📂 Project Structure
 
 ```
 src/
-├── assets/             # Icons, images, and logos
+├── assets/              # Icons and images (18 files, all in use)
 ├── Components/
-│   ├── Feed/           # Video grid for the homepage
-│   ├── Navbar/         # Top navigation (Search, Theme Toggle, Profile)
-│   ├── PlayVideo/      # Core video player, description, and comments
-│   ├── Recommended/    # Sidebar of related videos on the player page
-│   └── Sidebar/        # Collapsible side navigation with categories
-├── Context/            # Global context (AuthContext.jsx, ThemeContext.jsx)
+│   ├── Feed/            # Home page video grid
+│   ├── Navbar/          # Search, theme toggle, auth dropdown
+│   ├── PlayVideo/       # Video iframe, stats, comments, history tracking
+│   ├── Recommended/     # Right-side related videos panel
+│   └── Sidebar/         # Collapsible category navigation
 ├── pages/
-│   ├── Home/           # Main landing page
-│   ├── Video/          # Video watching page
-│   ├── Search/         # Search results page
-│   ├── Settings/       # User preferences and profile page
-│   └── History/        # Watch history page
-├── App.jsx             # Route definitions and layout wrapper
-├── data.js             # API Key and global utility functions
-├── firebase.js         # Firebase initialization and auth exports
-├── index.css           # Global CSS and Light/Dark CSS variables
-└── main.jsx            # Application entry point
+│   ├── Home/            # Landing page with category feed
+│   ├── Video/           # Full video + recommended layout
+│   ├── Search/          # Search results page
+│   ├── History/         # Watch history with clear button
+│   └── Settings/        # Theme + account + history management
+├── App.jsx              # Routes + global state (sidebar, category)
+├── AuthContext.jsx      # Firebase auth state provider
+├── ThemeContext.jsx     # Dark/light mode state provider
+├── data.js              # API key + utility functions
+└── firebase.js          # Firebase app initialization
 ```
 
-## 📜 License
+<br/>
 
-This project is open-source and available under the [MIT License](LICENSE).
+---
+
+## 📱 Responsive Breakpoints
+
+| Breakpoint | Behavior |
+|---|---|
+| `> 900px` | Full sidebar + wide feed grid |
+| `600–900px` | Collapsed icon-only sidebar |
+| `< 600px` | Sidebar hidden (hamburger overlay), single-column feed |
+| Landscape | Video player auto-expands to 80vh height |
+
+<br/>
+
+---
+
+## 🔒 Environment & Security
+
+> **Important:** Your Firebase config and YouTube API key are currently stored directly in source files.  
+> Before making this repository public, move them to environment variables:
+
+```bash
+# .env (already gitignored)
+VITE_YOUTUBE_API_KEY=your_key_here
+VITE_FIREBASE_API_KEY=your_key_here
+```
+
+Then reference with `import.meta.env.VITE_YOUTUBE_API_KEY` in your code.
+
+<br/>
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] Move API keys to `.env` variables
+- [ ] Liked Videos (similar schema to Watch History)
+- [ ] Channel page on clicking a channel name
+- [ ] Pagination / infinite scroll on the feed
+- [ ] Firebase Firestore security rules for production
+
+<br/>
+
+---
+
+<div align="center">
+
+Made with ❤️ by **Tanishk Raj**
+
+[![GitHub](https://img.shields.io/badge/GitHub-Tanishkraj2005-181717?style=flat-square&logo=github)](https://github.com/Tanishkraj2005)
+
+</div>
