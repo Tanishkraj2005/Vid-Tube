@@ -1,11 +1,12 @@
 .sidebar{
-    background: #fff;
+    background: var(--nav-bg);
     width: 15%;
     height: 100vh;
     position: fixed;
     top: 0;
     padding-left: 2%;
     padding-top: 80px;
+    transition: background 0.3s;
 }
 .shortcut-links img{
     width: 20px;
@@ -22,13 +23,13 @@
 .sidebar hr{
     border: 0;
     height: 1px;
-    background: #ccc;
+    background: var(--border-color);
     width: 85%;
 }
 .subscribed-list h3{
     font-size: 13px;
     margin: 20px 0;
-    color: #5a5a5a;
+    color: var(--text-secondary);
 }
 .subscribed-list img{
     width: 25px;
@@ -51,4 +52,41 @@
 .side-link.active img{
     padding-bottom: 2px;
     border-bottom: 3px solid red;
+}
+.side-link:hover {
+    background: var(--card-hover);
+    border-radius: 10px;
+    padding-right: 10px;
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        width: 250px;
+        z-index: 100;
+        background: var(--nav-bg);
+    }
+    .sidebar p, .sidebar h3 {
+        display: block;
+    }
+    .small-sidebar {
+        width: 60px;
+    }
+    .small-sidebar p, .small-sidebar h3 {
+        display: none;
+    }
+    .small-sidebar hr {
+        width: 50%;
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        width: 250px;
+        z-index: 100;
+        background: var(--nav-bg);
+    }
+    .small-sidebar {
+        display: none;
+    }
 }

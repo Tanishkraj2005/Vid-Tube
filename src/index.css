@@ -1,12 +1,35 @@
+:root {
+  --bg-color: #f9f9f9;
+  --text-color: #000;
+  --text-secondary: #5a5a5a;
+  --nav-bg: #fff;
+  --border-color: #ccc;
+  --card-hover: #f1f1f1;
+}
+
+[data-theme='dark'] {
+  --bg-color: #0f0f0f;
+  --text-color: #fff;
+  --text-secondary: #aaaaaa;
+  --nav-bg: #0f0f0f;
+  --border-color: #3f3f3f;
+  --card-hover: #272727;
+}
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
 }
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+}
 a{
   text-decoration: none;
-  color: #5a5a5a;
+  color: var(--text-secondary);
 }
 img{
   cursor: pointer;

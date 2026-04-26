@@ -2,41 +2,161 @@ nav{
     padding: 10px 2%;
     justify-content: space-between;
     box-shadow: 0 0 10px rgba(0, 0,0,0.2);
-    background: #fff;
+    background: var(--nav-bg);
     position: sticky;
     top: 0;
     z-index: 10;
+    transition: background 0.3s;
 }
 .nav-left .menu-icon{
     width: 22px;
     margin-right: 25px;
+    cursor: pointer;
 }
 .nav-left .logo{
     width: 130px;
 }
+.nav-middle{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+}
 .nav-middle .search-box{
-    border: 1px solid black;
-    margin-right: 15px;
+    border: 1px solid var(--border-color);
     padding: 8px 12px;
     border-radius: 25px;
+    background: var(--bg-color);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
 }
 .nav-middle .search-box input{
-    width: 400px;
+    width: 100%;
     border: 0;
     outline: 0;
     background: transparent;
+    color: var(--text-color);
+    font-size: 14px;
 }
 
 .nav-middle .search-box img{
     width: 15px;
+    flex-shrink: 0;
+}
+
+.nav-right{
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 .nav-right img{
     width: 25px;
     border-radius: 50%;
+    margin-right: 15px;
 }
 
 .nav-right .user-icon{
     width: 35px;
     border-radius: 50%;
+    margin-right: 0;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.login-btn {
+    padding: 7px 14px;
+    border: 1px solid #065fd4;
+    color: #065fd4;
+    background: transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .nav-middle .search-box {
+        max-width: 100%;
+    }
+    .nav-middle .search-box input {
+        font-size: 13px;
+    }
+    .nav-left .logo {
+        width: 80px;
+    }
+    .nav-left .menu-icon {
+        margin-right: 8px;
+        width: 18px;
+    }
+    .theme-toggle {
+        font-size: 16px;
+        margin-right: 8px;
+    }
+    .login-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
+
+.profile-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    background: var(--nav-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 200;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    min-width: 180px;
+}
+
+.dropdown-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+    white-space: nowrap;
+}
+
+.dropdown-email {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 0;
+    white-space: nowrap;
+}
+
+.dropdown-logout {
+    background: #e53935;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 4px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.dropdown-logout:hover {
+    background: #c62828;
 }

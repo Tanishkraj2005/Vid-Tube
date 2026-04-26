@@ -1,9 +1,11 @@
 .play-video{
-    flex-basis: 69%;
+    flex: 1 1 0;
+    min-width: 0;
 }
 .play-video iframe{
     width: 100%;
-    height: 37vw;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
 }
 .play-video h3{
     margin-top: 10px;
@@ -17,7 +19,7 @@
     flex-wrap: wrap;
     margin-top: 10px;
     font-size: 14px;
-    color: #5a5a5a;
+    color: var(--text-secondary);
 }
 
 .play-video-info img{
@@ -34,7 +36,7 @@
 .play-video hr{
     border: 0;
     height: 1px;
-    background: #ccc;
+    background: var(--border-color);
     margin: 10px 0;
 }
 
@@ -55,13 +57,13 @@
 }
 
 .publisher div p{
-    color: #000;
+    color: var(--text-color);
     font-weight: 600;
     font-size: 18px;
 }
 .publisher div span{
     font-size: 13px;
-    color: #5a5a5a;
+    color: var(--text-secondary);
 }
 .publisher button{
     background: red;
@@ -80,11 +82,11 @@
 .vid-description p{
     font-size: 14px;
     margin-bottom: 5px;
-    color: #5a5a5a;
+    color: var(--text-secondary);
 }
 .vid-description h4{
     font-size: 14px;
-    color: #5a5a5a;
+    color: var(--text-color);
     margin-top: 15px;
 }
 .comment{
@@ -103,7 +105,7 @@
 }
 .comment h3 span{
     font-size: 12px;
-    color: #5a5a5a;
+    color: var(--text-secondary);
     font-weight: 500;
     margin-left: 8px;
 }
@@ -120,5 +122,45 @@
 }
 .comment-action span{
     margin-right: 20px;
-    color: #5a5a5a;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 900px) {
+    .play-video {
+        flex-basis: 100%;
+    }
+    .vid-description {
+        padding-left: 0;
+    }
+    .publisher button {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 600px) {
+    .play-video h3 {
+        font-size: 17px;
+        padding: 0 10px;
+    }
+    .play-video-info {
+        padding: 0 10px;
+    }
+    .publisher {
+        padding: 0 10px;
+    }
+    .vid-description {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .comment {
+        padding: 0 10px;
+    }
+}
+
+/* When phone is in landscape mode, make video fill the full width */
+@media (max-width: 900px) and (orientation: landscape) {
+    .play-video iframe {
+        height: 80vh;
+    }
 }
